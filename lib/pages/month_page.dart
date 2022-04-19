@@ -1,6 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class MonthPage extends StatelessWidget {
+  final User user;
+  MonthPage(this.user, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
