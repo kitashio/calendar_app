@@ -1,12 +1,12 @@
 import 'package:calender_app/add_model.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class AddSchedulePage extends ConsumerWidget {
-  final User user;
   AddSchedulePage(this.user, {Key? key}) : super(key: key);
+  final User user;
 
   @override
   Widget build(BuildContext context,WidgetRef ref) {
@@ -31,7 +31,7 @@ class AddSchedulePage extends ConsumerWidget {
           children: [
             TextField(
               decoration: InputDecoration(
-                  labelText: 'コレクションタイトル',
+                  labelText: '予定',
                   filled: true,
                   fillColor: Colors.grey.shade200,
                   border: OutlineInputBorder(
@@ -42,6 +42,17 @@ class AddSchedulePage extends ConsumerWidget {
               onChanged: (text){
                 ref.read(AddProvider).title = text;
               },
+            ),
+            SizedBox(height: 20,),
+            Container(
+              height: 60,
+              child: CupertinoDatePicker(
+                initialDateTime: ref.read(AddProvider).selectDate,
+                mode: CupertinoDatePickerMode.date,
+                onDateTimeChanged: (dateTime) {
+                  ref.read(AddProvider).selectDate = dateTime;
+                },
+              ),
             ),
           ],
         )

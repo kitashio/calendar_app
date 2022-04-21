@@ -37,13 +37,20 @@ class SchedulePage extends StatelessWidget {
             }
 
             final item = snapshot.data!.docs.map((snapshot) =>
-                Container(
-                  padding: const EdgeInsets.all(10),
-                  child: Text(snapshot.get('title')),
+                Card(
+                  child: Container(
+                    padding: const EdgeInsets.all(10),
+                    child: Column(
+                      children: [
+                        Text(snapshot.get('title')),
+                        Text(snapshot.get('createdAt').toString()),
+                      ],
+                    ),
+                  ),
                 ),
             ).toList();
 
-            return Column(
+            return ListView(
               children: item,
             );
           }

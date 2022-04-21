@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -68,5 +69,7 @@ class AddModel extends ChangeNotifier {
       ScaffoldMessenger.of(context).showSnackBar(snackBar);
     }
   }
+
+  var selectDate = DateTime.now();
 
 }
