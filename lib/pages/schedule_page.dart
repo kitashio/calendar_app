@@ -36,17 +36,34 @@ class SchedulePage extends StatelessWidget {
               );
             }
 
+            snapshot.data!.docs.map((doc) =>
+                Builder(
+                    builder: (BuildContext context) {
+                      Timestamp t = doc.get('date');
+                      DateTime d = t.toDate();
+                      return Text(d.toString());
+
+            }),
+            );
+
             final item = snapshot.data!.docs.map((snapshot) =>
-                Card(
-                  child: Container(
-                    padding: const EdgeInsets.all(10),
-                    child: Column(
-                      children: [
-                        Text(snapshot.get('title')),
-                        Text(snapshot.get('createdAt').toString()),
-                      ],
-                    ),
-                  ),
+                Builder(
+                  builder: (context) {
+                    Timestamp t = snapshot.get('date');
+                    DateTime d = t.toDate();
+
+                    return Card(
+                      child: Container(
+                        padding: const EdgeInsets.all(10),
+                        child: Column(
+                          children: [
+                            Text(snapshot.get('title')),
+                            Text(d.toString()),
+                          ],
+                        ),
+                      ),
+                    );
+                  }
                 ),
             ).toList();
 

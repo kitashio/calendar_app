@@ -12,6 +12,7 @@ final AddProvider = ChangeNotifierProvider<AddModel>(
 
 class AddModel extends ChangeNotifier {
   String title  = '';
+  var selectDate = DateTime.now();
 
   Future addSet (User user) async {
 
@@ -34,6 +35,7 @@ class AddModel extends ChangeNotifier {
     await doc.set({
       'docId': doc.id,
       'title': title,
+      'date': selectDate,
       'uid': uid,
       'createdAt': createdAt,
     });
@@ -69,7 +71,5 @@ class AddModel extends ChangeNotifier {
       ScaffoldMessenger.of(context).showSnackBar(snackBar);
     }
   }
-
-  var selectDate = DateTime.now();
 
 }
