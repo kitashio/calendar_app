@@ -1,8 +1,7 @@
-import 'package:calender_app/pages/bottom_tab.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
 import 'pages/first_page.dart';
 
 void main() async {
